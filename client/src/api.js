@@ -1,0 +1,1 @@
+export const api=(u,o={})=>fetch('/api'+u,{...o,headers:{...(o.body&&!(o.body instanceof FormData)?{'Content-Type':'application/json'}:{}),...(localStorage.token?{Authorization:'Bearer '+localStorage.token}:{})}}).then(async r=>{const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||'Error');return d});
